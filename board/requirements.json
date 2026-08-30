@@ -25,6 +25,7 @@
   "derivation": {
     "method": "BRIEF.md was read and split; no design decision was taken. Every fixed_requirements entry, and every spec-table row sourced from the brief, carries a quotation that was checked by literal substring match against the brief bytes digested above. The build refuses to emit this file if any quotation is not found.",
     "quotations_verified": 22,
+    "where_the_quotations_are": "Every one of them is in this file: fixed_requirements[].brief_evidence and brief_spec_rows[].brief_evidence. The count above is the sum of those two lists, so it is recomputable from this repository alone - re-read BRIEF.md and check each string is a substring of it. brief_spec_rows carries the quotations behind the README's spec table, which would otherwise cite the brief with the evidence left in a build script.",
     "review": "two rounds of adversarial review against the brief, looking for invented requirements, lost requirements, evidence supporting a weaker claim than the one made beside it, and worksheet questions that presuppose their own answer"
   },
   "fixed_requirements": [
@@ -87,6 +88,58 @@
       "id": "REQ-12",
       "requirement": "The board has an SPI interface: SPI is the second named endpoint of the bridge, so the interface itself must exist, even though its role, signal count, rate and physical interface are left open.",
       "brief_evidence": "Design a small FPGA board that bridges four PMOD-style connectors to USB and SPI."
+    }
+  ],
+  "brief_spec_rows": [
+    {
+      "aspect": "Core function",
+      "value": "An FPGA board that bridges four PMOD-style connectors to USB and SPI",
+      "brief_evidence": "Design a small FPGA board that bridges four PMOD-style connectors to USB and SPI."
+    },
+    {
+      "aspect": "PMOD-style headers",
+      "value": "Four headers, 8 signals each; the chosen FPGA must have enough I/O to serve all four",
+      "brief_evidence": "Use an FPGA with enough I/O for four 8-signal headers"
+    },
+    {
+      "aspect": "Configuration storage",
+      "value": "Configuration flash on the board; type, interface and size unstated",
+      "brief_evidence": "include configuration flash, an oscillator, USB connectivity, and all required power rails"
+    },
+    {
+      "aspect": "Clock source",
+      "value": "An oscillator on the board; frequency, output standard and count unstated",
+      "brief_evidence": "include configuration flash, an oscillator, USB connectivity, and all required power rails"
+    },
+    {
+      "aspect": "USB",
+      "value": "USB connectivity required; speed class, connector and implementation method unstated",
+      "brief_evidence": "include configuration flash, an oscillator, USB connectivity, and all required power rails"
+    },
+    {
+      "aspect": "SPI",
+      "value": "An SPI interface is required as the bridge's second endpoint; role, signal count, rate and physical interface unstated",
+      "brief_evidence": "bridges four PMOD-style connectors to USB and SPI. Use an FPGA with enough I/O for four 8-signal headers"
+    },
+    {
+      "aspect": "Power rails",
+      "value": "All rails the chosen design requires; number, voltages and input source unstated",
+      "brief_evidence": "include configuration flash, an oscillator, USB connectivity, and all required power rails"
+    },
+    {
+      "aspect": "Power sequencing",
+      "value": "The sequencing assumptions must be documented",
+      "brief_evidence": "document the power-sequencing assumptions"
+    },
+    {
+      "aspect": "FPGA family and package",
+      "value": "Explicitly delegated to the designer; no device, family or package named",
+      "brief_evidence": "Choose the FPGA family and package yourself"
+    },
+    {
+      "aspect": "Board size and outline",
+      "value": "No dimensions given; the board should be intentionally compact enough that FPGA escape and connector fanout matter",
+      "brief_evidence": "The board should be intentionally compact enough that FPGA escape and connector fanout matter."
     }
   ],
   "open_decisions": [
