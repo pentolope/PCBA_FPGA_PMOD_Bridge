@@ -1,0 +1,16 @@
+{
+  "repo": "PCBA_FPGA_PMOD_Bridge",
+  "title": "Small FPGA Multi-I/O Bridge",
+  "category": "fpga",
+  "difficulty": 3,
+  "detail": 2,
+  "layers": "4",
+  "stress": [
+    "FPGA escape",
+    "multiple voltage rails",
+    "clock distribution",
+    "connector fanout"
+  ],
+  "benchmark_id": 16,
+  "brief_file": "BRIEF.md"
+}
